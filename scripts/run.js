@@ -1,18 +1,34 @@
 const main = async () => {
-    const waveContractFactory = await hre.ethers.getContractFactory('WavePortal');
-    const waveContract = await waveContractFactory.deploy();
-    await waveContract.deployed();
-    console.log("Contract deployed to:", waveContract.address);
-};
+    const [owner, randomPerson] = await hre.ethers.getSigners();
+    const songContractFactory = await hre.ethers.getContractFactory('SongPortal');
+    const songContract = await songContractFactory.deploy();
+    await songContract.deployed();
   
-const runMain = async () => {
+    console.log('Contract deployed to:', songContract.address);
+    console.log('Contract deployed by:', owner.address);
+  
+    let songCount;
+    songCount = await songContract.getTotalSongs();
+  
+    let songTxn = await songContract.shareSong();
+    await songTxn.wait();
+  
+    songCount = await songContract.getTotalSongs();
+  
+    songTxn = await songContract.connect(randomPerson).shareSong();
+    await songTxn.wait();
+  
+    songCount = await songContract.getTotalSongs();
+  };
+  
+  const runMain = async () => {
     try {
-        await main();
-        process.exit(0);
+      await main();
+      process.exit(0);
     } catch (error) {
-        console.log(error);
-        process.exit(1);
+      console.log(error);
+      process.exit(1);
     }
-};
-
-runMain();
+  };
+  
+  runMain();
