@@ -1,0 +1,14 @@
+V1 (just wave)
+0x4d380e5d89B53Ce512820Ec49B666c60cF3587ef
+
+V2 (wave + message)
+0xc9d0E31f332a872Ee46132Cf0FF5FaDA41C225d6
+
+V3 (wave + message + funds)
+0x3E7680D16fFba240c6EC9570Beeb0401513F382c
+
+V4 (wave + message + funds + antispam)
+0x8B0A1982f6ff198D1D8a405e58053FC660071E8a
+
+V5 (song + funds + antispam)
+0xe7081D4c7B4D78C4cc3c1CaadfF406a17bD53026
